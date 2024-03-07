@@ -1,0 +1,119 @@
+/* Estilo para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el título del formulario */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas de los campos */
+label {
+    display: block;
+    font-weight: bold;
+}
+
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="date"] {
+    width: calc(100% - 22px); /* Ancho menos el padding y el borde */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo para el botón de enviar */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.wrapper {
+    display: flex;
+    /* justify-content: space-between; */
+    max-width: 1400px;
+    margin: 0 auto;
+    /* padding: 20px; */
+    box-sizing: border-box;
+}
+
+.form-container {
+    width: 45%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; /* Añade un margen derecho */
+}
+
+/* Estilo para el contenedor de la tabla */
+.table-container {
+    flex: 1;
+    /* width: 100%; */
+    background-color: #fff;
+    padding-left: 20px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+#busqueda {
+    width: 40%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+/* Estilo para el botón de editar */
+.editar-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* Estilo para el botón de eliminar */
+.eliminar-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
