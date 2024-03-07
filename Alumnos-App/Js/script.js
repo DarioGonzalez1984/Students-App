@@ -1,7 +1,7 @@
    // Función para cargar los alumnos en la tabla
         // Función para cargar los alumnos en la tabla
         function cargarAlumnos() {
-            fetch('http://localhost/alumnos/alumnos-api/api.php')
+            fetch('http://localhost/students-app/alumnos-api/api.php')
             .then(response => response.json())
             .then(data => {
                 // Ordenar los alumnos por su ID de forma ascendente
@@ -12,7 +12,7 @@
         
                 data.forEach(alumno => {
                     // Obtener el nombre del curso
-                    fetch(`http://localhost/alumnos/alumnos-api/api.php?id=${alumno.id}`)
+                    fetch(`http://localhost/students-app/alumnos-api/api.php?id=${alumno.id}`)
                     .then(response => response.json())
                     .then(curso => {
                         const row = document.createElement('tr');
@@ -46,7 +46,7 @@
         
                 // Función para cargar los datos de un alumno en el formulario para su edición
                 function cargarDatosAlumnoEnFormulario(id) {
-                    fetch(`http://localhost/alumnos/alumnos-api/api.php?id=${id}`)
+                    fetch(`http://localhost/students-app/alumnos-api/api.php?id=${id}`)
                     .then(response => response.json())
                     .then(alumno => {
                         // Asignar valores a los campos del formulario
@@ -87,7 +87,7 @@
                     // Confirmar si el usuario realmente desea eliminar al alumno
                     if (confirm("¿Estás seguro de que deseas eliminar este alumno?")) {
                         // Llamar a la API para eliminar el alumno
-                        fetch(`http://localhost/alumnos/alumnos-api/api.php?id=${id}`, {
+                        fetch(`http://localhost/students-app/alumnos-api/api.php?id=${id}`, {
                             method: 'DELETE'
                         })
                         .then(response => response.text())
@@ -112,7 +112,7 @@
             // Establecer curso_id en el formData
             formData.append('curso_id', cursoId);
             // Determinar si se está agregando un nuevo alumno o editando uno existente
-            const url = alumnoId ? `http://localhost/alumnos/alumnos-api/api.php?id=${alumnoId}` : 'http://localhost/alumnos/alumnos-api/api.php';
+            const url = alumnoId ? `http://localhost/students-app/alumnos-api/api.php?id=${alumnoId}` : 'http://localhost/students-app/alumnos-api/api.php';
             const method = alumnoId ? 'PUT' : 'POST';
             fetch(url, {
                 method: method,

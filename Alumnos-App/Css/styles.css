@@ -117,3 +117,61 @@ table th {
     cursor: pointer;
 }
 
+/* Estilos para el contenedor de inicio de sesión */
+/* Estilos para el contenedor de inicio de sesión */
+.login-container {
+    width: 400px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Agregar posición absoluta */
+    top: 50%; /* Posicionar el contenedor en el centro vertical */
+    left: 50%; /* Posicionar el contenedor en el centro horizontal */
+    transform: translate(-50%, -50%); /* Desplazar el contenedor hacia arriba y a la izquierda */
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de inicio de sesión */
+#loginForm .btn-submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#loginForm .btn-submit:hover {
+    background-color: #0056b3;
+}
