@@ -1,104 +1,43 @@
-// Obtener referencias a los elementos del formulario de inicio de sesión
-const loginForm = document.getElementById('loginForm');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+    
+    // Obtener los valores de usuario y contraseña
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-// Agregar un event listener al formulario de inicio de sesión
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
-
-    // Obtener los valores ingresados por el usuario
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    // Validar que los campos no estén vacíos
-    if (username === '' || password === '') {
-        alert('Por favor, ingrese su nombre de usuario y contraseña.');
-        return;
-    }
-
-    // Crear un objeto con los datos de inicio de sesión
-    const loginData = {
+    // Datos a enviar al servidor
+    const data = {
         username: username,
         password: password
     };
 
-    // Realizar una solicitud POST a la API de PHP para iniciar sesión
-    fetch('http://localhost/students-app/alumnos-api/api.php?action=login', {
+    // Configurar la solicitud Fetch
+    fetch('http://localhost/students-app/alumnos-api/loginApi.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(loginData)
+        body: JSON.stringify(data)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la solicitud Fetch');
+        }
+        return response.json();
+    })
     .then(data => {
-        // Manejar la respuesta de la API
+        // Manejar la respuesta del servidor
         if (data.success) {
-            alert('Inicio de sesión exitoso.');
-            // Redirigir al usuario a la página principal
-            window.location.href = 'index.html';
+            console.log("Login exitoso");
+            // Login exitoso, redirigir a la página de inicio
+            window.location.href = '/students-app/Alumnos-App/index.html';
         } else {
+            // Mostrar mensaje de error
+            console.log("se rompió todo");
             alert(data.message);
         }
     })
     .catch(error => {
-        console.error('Error al realizar la solicitud:', error);
-        alert('Ocurrió un error. Por favor, inténtalo de nuevo más tarde.');
-    });
-
-    // Limpiar los campos del formulario de inicio de sesión
-    usernameInput.value = '';
-    passwordInput.value = '';
-});
-
-// Obtener referencias a los elementos del formulario de registro
-const signupForm = document.getElementById('signupForm');
-const newUsernameInput = document.getElementById('newUsername');
-const newPasswordInput = document.getElementById('newPassword');
-
-// Agregar un event listener al formulario de registro
-signupForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
-
-    // Obtener los valores ingresados por el usuario
-    const newUsername = newUsernameInput.value.trim();
-    const newPassword = newPasswordInput.value.trim();
-
-    // Validar que los campos no estén vacíos
-    if (newUsername === '' || newPassword === '') {
-        alert('Por favor, complete todos los campos.');
-        return;
-    }
-
-    // Crear un objeto con los datos del nuevo usuario
-    const signupData = {
-        username: newUsername,
-        password: newPassword
-    };
-
-    // Realizar una solicitud POST a la API de PHP para registrar al nuevo usuario
-    fetch('http://localhost/students-app/alumnos-api/api.php?action=signup', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signupData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Manejar la respuesta de la API
-        if (data.success) {
-            alert('Registro exitoso. Ahora puedes iniciar sesión.');
-            // Limpiar los campos del formulario de registro después del registro exitoso
-            newUsernameInput.value = '';
-            newPasswordInput.value = '';
-        } else {
-            alert(data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error al realizar la solicitud:', error);
-        alert('Ocurrió un error. Por favor, inténtalo de nuevo más tarde.');
+        console.error('Error:', error);
     });
 });
